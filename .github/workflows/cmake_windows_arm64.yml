@@ -1,7 +1,7 @@
 ---
 name: CMake-Windows-ARM64
 
-on:
+'on':
   push:
     branches: ["main"]
   pull_request:
