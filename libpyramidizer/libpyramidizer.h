@@ -2,6 +2,8 @@
 
 #include "IConsoleIo.h"
 
+#include <memory>
+
 namespace libpyramidizer
 {
     /// Main entry point for the library, providing "terminal based operation". The
