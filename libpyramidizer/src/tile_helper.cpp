@@ -8,24 +8,26 @@ namespace
 {
     IntRect Union(const IntRect& a, const IntRect& b)
     {
-        if (a.IsNonEmpty() && b.IsNonEmpty())
+        const bool a_non_empty = a.IsNonEmpty();
+        const bool b_non_empty = b.IsNonEmpty();
+        if (a_non_empty && b_non_empty)
         {
             return IntRect{ min(a.x, b.x), min(a.y, b.y), max(a.x + a.w, b.x + b.w) - min(a.x, b.x), max(a.y + a.h, b.y + b.h) - min(a.y, b.y) };
         }
-        else if (a.IsNonEmpty())
+
+        if (a_non_empty)
         {
             return a;
         }
-        else if (b.IsNonEmpty())
+
+        if (b_non_empty)
         {
             return b;
         }
-        else
-        {
-            IntRect r;
-            r.Invalidate();
-            return r;
-        }
+
+        IntRect r;
+        r.Invalidate();
+        return r;
     }
 }
 
@@ -41,7 +43,7 @@ void TileHelper::InitializeFromFunctor(const std::function<bool(libCZI::IntRect&
 
 libCZI::IntRect TileHelper::GetMinimalRectForRoi(const libCZI::IntRect& rect) const
 {
-    IntRect union_rect { 0, 0, 0, 0 };
+    IntRect union_rect{ 0, 0, 0, 0 };
     for (const auto& tile : this->tiles_)
     {
         const auto intersection = tile.Intersect(rect);

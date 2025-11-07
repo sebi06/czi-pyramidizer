@@ -11,10 +11,9 @@ set(LIBCZI_BUILD_UNITTESTS OFF CACHE BOOL "" FORCE)
 
 FetchContent_Declare(
   libCZI
-  #GIT_REPOSITORY https://github.com/ptahmose/libCZI.git
   GIT_REPOSITORY https://github.com/ZEISS/libczi
   #GIT_TAG        origin/main
-  GIT_TAG        11015ae9aa97abbf9d78293a27115393077f9146 # Freeze to a tested commit
+  GIT_TAG        da3d7dcef3e1d9fb0f0b59325b0a4c77e081523c # main as of 11/7/2025
 )
 
 # Fetch the content and make it available

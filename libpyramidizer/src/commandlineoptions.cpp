@@ -3,6 +3,7 @@
 
 #include <CLI/App.hpp>
 #include <CLI/Formatter.hpp>
+#include "CLI/ExtraValidators.hpp"
 #include <CLI/Config.hpp>
 #include <rapidjson/document.h>
 

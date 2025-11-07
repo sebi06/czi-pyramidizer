@@ -49,14 +49,14 @@ include(FetchContent)
 FetchContent_Declare(
   cli11
   GIT_REPOSITORY https://github.com/CLIUtils/CLI11
-  GIT_TAG        v2.3.2
+  GIT_TAG        v2.6.1
 )
 FetchContent_MakeAvailable(cli11)
 
 FetchContent_Declare(
     GSL
     GIT_REPOSITORY "https://github.com/microsoft/GSL"
-    GIT_TAG "v4.1.0"
+    GIT_TAG "v4.2.0"
 )
 FetchContent_MakeAvailable(GSL)
 
@@ -74,6 +74,13 @@ else()
     # Since "RapidJSON" is a header-only library, we just have to download it and point to the include directory.
     # Note: when using v1.1.0 of RapidJSON (the latest release) there we problems (with GCC14.2 with msys2), so
     #        we use a later version from the master branch.
+
+    # --- START OF MODIFICATION TO FIX RAPIDJSON COMPATIBILITY ERROR ---
+    # This sets the compatibility policy version minimum to 3.5, allowing
+    # modern CMake versions to process the RapidJSON dependency's potentially
+    # outdated CMAKE_MINIMUM_REQUIRED syntax without error.
+    set(CMAKE_POLICY_VERSION_MINIMUM 3.10)
+    # --- END OF MODIFICATION ---
     FetchContent_Declare(
             RapidJSON
             GIT_REPOSITORY https://github.com/Tencent/rapidjson.git
