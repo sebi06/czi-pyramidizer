@@ -75,16 +75,14 @@ else()
     # Note: when using v1.1.0 of RapidJSON (the latest release) there we problems (with GCC14.2 with msys2), so
     #        we use a later version from the master branch.
 
-    # --- START OF MODIFICATION TO FIX RAPIDJSON COMPATIBILITY ERROR ---
     # This sets the compatibility policy version minimum to 3.5, allowing
     # modern CMake versions to process the RapidJSON dependency's potentially
     # outdated CMAKE_MINIMUM_REQUIRED syntax without error.
     set(CMAKE_POLICY_VERSION_MINIMUM 3.10)
-    # --- END OF MODIFICATION ---
     FetchContent_Declare(
             RapidJSON
             GIT_REPOSITORY https://github.com/Tencent/rapidjson.git
-            GIT_TAG        815e6e7e7e14be44a6c15d9aefed232ff064cad0 # master as of 2024-09-26
+            GIT_TAG        24b5e7a8b27f42fa16b96fc70aade9106cf7102f # master as of 2025-11-08
             PREFIX "${CMAKE_BINARY_DIR}/vendor/rapidjson"
     )
 
