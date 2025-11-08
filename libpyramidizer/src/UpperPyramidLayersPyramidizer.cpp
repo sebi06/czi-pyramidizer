@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2024 Carl Zeiss Microscopy GmbH
+//
+// SPDX-License-Identifier: MIT
+
 #include "../inc/UpperPyramidLayersPyramidizer.h"
 #include "../inc/tile_helper.h"
 #include "../inc/pyramid_utilities.h"

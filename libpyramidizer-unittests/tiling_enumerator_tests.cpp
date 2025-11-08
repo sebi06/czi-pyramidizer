@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2024 Carl Zeiss Microscopy GmbH
+//
+// SPDX-License-Identifier: MIT
+
 #include <gtest/gtest.h>
 #include "inc/tiling_enumerator.h"
 #include <array>

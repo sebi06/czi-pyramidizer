@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2024 Carl Zeiss Microscopy GmbH
+//
+// SPDX-License-Identifier: MIT
+
 #include <gtest/gtest.h>
 #include "src/imaging/compose.h"
 #include "src/imaging/bitmapdata.h"

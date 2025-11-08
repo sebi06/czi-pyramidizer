@@ -11,6 +11,10 @@ Files: .github/*
 Copyright: 2024 Carl Zeiss Microscopy GmbH
 License: MIT
 
+Files: .atomineer/*
+Copyright: 2024 Carl Zeiss Microscopy GmbH
+License: MIT
+
 Files: doc/*
 Copyright: 2024 Carl Zeiss Microscopy GmbH
 License: MIT

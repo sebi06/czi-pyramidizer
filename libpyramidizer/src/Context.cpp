@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2024 Carl Zeiss Microscopy GmbH
+//
+// SPDX-License-Identifier: MIT
+
 #include "../inc/IContext.h"
 #include "../inc/IDecimationProcessing.h"
 #include <memory>

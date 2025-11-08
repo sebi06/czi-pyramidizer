@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2024 Carl Zeiss Microscopy GmbH
+//
+// SPDX-License-Identifier: MIT
+
 #include "../inc/pyramidizer_operation.h"
 #include "../inc/IContext.h"
 #include "../IConsoleIo.h"
