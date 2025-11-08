@@ -18,7 +18,10 @@ public:
     }
 };
 
-static DecimationProcessing g_decimationProcessing;
+namespace
+{
+    DecimationProcessing g_decimationProcessing;
+}
 
 IDecimationProcessing* libpyramidizer::GetDecimationProcessing()
 {

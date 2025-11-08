@@ -88,7 +88,7 @@ namespace
     }
 
 
-    /// Creates a CZI with four subblock of size 100x100 of pixeltype "Gray8" in a
+    /// Creates a CZI with four subblocks of size 100x100 of pixeltype "Gray8" in a
     /// mosaic arrangement. The arrangement is as follows:
     /// +--+--+
     /// |0 |1 |

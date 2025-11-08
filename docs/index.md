@@ -4,28 +4,20 @@ A tool for generating and verifying multi-resolution pyramids inside CZI image c
 
 ## Features
 
-- Detect whether a pyramid is required
-- Generate missing pyramid layers
-- Copy attachments and base layer tiles
-- Progress reporting with colored console output
-- Optional Azure / curl based streaming support via libCZI
+- Detect whether a pyramid in a given CZI document is required
+- Detect whether an pyramid exists already
+- Generate a multi-resolution pyramid and add it to the CZI
 
 ## Quick Start
 
 ```
-czi-pyramidizer input.czi output.czi
+czi-pyramidizer --source input.czi --destination output.czi
 ```
 
 Check only:
 ```
-czi-pyramidizer --check input.czi dummy.czi
+czi-pyramidizer --check-only input.czi
 ```
-
-## Documentation Sections
-
-- Getting Started
-- Usage (CLI & Examples)
-- Development (Build & Contributing)
 
 ## Status
 
@@ -33,4 +25,4 @@ Early-stage documentation. Contributions welcome.
 
 ## License
 
-(Insert license summary here.)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
