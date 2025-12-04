@@ -6,9 +6,20 @@ Follow these steps to build and run `czi-pyramidizer`.
 
 - CMake (>=3.15)
 - C++17 toolchain
-- Ninja (recommended)
 - OpenCV development packages
-- (Optional) Azure SDK dependencies via vcpkg
+
+For preparing the build environment, consider using [vcpkg](https://github.com/microsoft/vcpkg) to get the OpenCV dependency.  
+The commands for vcpkg are:
+```
+vcpkg install opencv4[core,jpeg,png,quirc,tiff,webp]:x64-windows-static
+```
+
+Then, you need to add those flags to the CMake configure command:
+```
+-DCMAKE_TOOLCHAIN_FILE=[vcpkg-root]/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-windows-static
+```
+
+
 
 ## 2. Clone Repository
 
@@ -20,42 +31,28 @@ cd czi-pyramidizer
 ## 3. Configure & Build
 
 ```
-cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
-cmake --build build -j
+mkdir build
+cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release
+cmake --build . -j
 ```
 
-## 4. Run
+Append additional flags as needed (see above for vcpkg).
+
+## 4. Run unit tests (optional)
 
 ```
-./build/czi-pyramidizer/czi-pyramidizer input.czi output.czi
+ctest
 ```
 
-## 5. Verify Pyramid Need Only
 
-```
-./build/czi-pyramidizer/czi-pyramidizer --check input.czi dummy.czi
-```
-
-Exit codes distinguish whether a pyramid is needed.
-
-## 6. Next Steps
+## 5. Next Steps
 
 - Explore `docs/usage/cli.md`
-- Read `docs/dev/build.md`
-- Contribute via `docs/dev/contributing.md`
 
 ## Troubleshooting
 
 | Problem | Hint |
 |---------|------|
 | Missing OpenCV headers | Install `libopencv-dev` (Linux) or use vcpkg. |
-| Linker errors (Azure) | Ensure matching vcpkg triplet / rebuild cache. |
-| Colors not shown | Terminal may not support ANSI; run locally. |
 
-## Cleaning
-
-```
-rm -rf build
-```
-
-You now have a working setup.

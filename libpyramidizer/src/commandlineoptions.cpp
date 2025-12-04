@@ -316,6 +316,12 @@ CommandLineOptions::ParseResult CommandLineOptions::Parse(int argc, char** argv)
         return ParseResult::Exit;
     }
 
+    if (source_czi_uri.empty())
+    {
+        console_io_->WriteLineStdOut("No source file specified.");
+        return ParseResult::Error;
+    }
+
     this->source_czi_uri_ = Utilities::utf8_to_wstring(source_czi_uri);
 
     this->source_czi_stream_class_ = argument_source_stream_class;
@@ -325,8 +331,6 @@ CommandLineOptions::ParseResult CommandLineOptions::Parse(int argc, char** argv)
         const bool b = TryParseInputStreamCreationPropertyBag(argument_source_stream_creation_propbag, &this->property_bag_for_stream_class_);
         ThrowIfFalse(b, "--propbag-source-stream-creation", argument_source_stream_creation_propbag);
     }
-
-    this->destination_czi_uri_ = Utilities::utf8_to_wstring(destination_czi_uri);
 
     if (!argument_compression_options.empty())
     {
@@ -357,6 +361,14 @@ CommandLineOptions::ParseResult CommandLineOptions::Parse(int argc, char** argv)
         this->command_ = Command::CheckOnly;
         return ParseResult::OK;
     }
+
+    if (destination_czi_uri.empty())
+    {
+        console_io_->WriteLineStdOut("No destination file specified.");
+        return ParseResult::Error;
+    }
+
+    this->destination_czi_uri_ = Utilities::utf8_to_wstring(destination_czi_uri);
 
     this->command_ = Command::Pyramidize;
     return ParseResult::OK;

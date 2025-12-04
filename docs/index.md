@@ -1,10 +1,9 @@
 # CZI Pyramidizer
 
-A tool for generating and verifying multi-resolution pyramids inside CZI image containers.
+A tool for generating multi-resolution pyramids inside CZI documents.
 
 ## Features
 
-- Detect whether a pyramid in a given CZI document is required
 - Detect whether an pyramid exists already
 - Generate a multi-resolution pyramid and add it to the CZI
 
@@ -16,12 +15,8 @@ czi-pyramidizer --source input.czi --destination output.czi
 
 Check only:
 ```
-czi-pyramidizer --check-only input.czi
+czi-pyramidizer --check-only --source input.czi
 ```
-
-## Status
-
-Early-stage documentation. Contributions welcome.
 
 ## License
 
