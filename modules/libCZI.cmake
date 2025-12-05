@@ -13,7 +13,7 @@ FetchContent_Declare(
   libCZI
   GIT_REPOSITORY https://github.com/ZEISS/libczi
   #GIT_TAG        origin/main
-  GIT_TAG        da3d7dcef3e1d9fb0f0b59325b0a4c77e081523c # main as of 11/7/2025
+  GIT_TAG        da3d7dcef3e1d9fb0f0b59325b0a4c77e081523c # main as of 20/10/2025
 )
 
 # Fetch the content and make it available
