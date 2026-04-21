@@ -38,7 +38,7 @@ jobs:
 
       # Upload MegaLinter artifacts
       - name: Archive production artifacts
-        if: never()
+        if: ${{ false }}
         uses: actions/upload-artifact@v4
         with:
           name: MegaLinter reports
