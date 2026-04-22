@@ -18,7 +18,6 @@ env:
 
 jobs:
   build:
-    #if: false  # temporarily disabled
     runs-on: ubuntu-latest
     container:
       image: alpine:latest

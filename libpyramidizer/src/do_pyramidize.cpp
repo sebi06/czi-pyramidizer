@@ -222,9 +222,20 @@ DoPyramidize::PyramidRegionInfo DoPyramidize::Impl::DoPlane(const PlaneEnumerato
 
     if (!is_additional_pyramid_layer_needed)
     {
+        bool at_least_one_pyramid_tile = false;
+
         // If we only need one layer, we do not have to keep the tiles of the next layer (in order to create the next layer).
-        this->DoLayer0(pyramid_region, nullptr);
-        pyramid_region_info.number_of_pyramid_layers = 1;
+        this->DoLayer0(
+            pyramid_region,
+            [&at_least_one_pyramid_tile](const std::shared_ptr<libCZI::IBitmapData>&, const libCZI::IntRect&)->void
+            {
+                at_least_one_pyramid_tile = true;
+            });
+
+        if (at_least_one_pyramid_tile)
+        {
+            pyramid_region_info.number_of_pyramid_layers = 1;
+        }
     }
     else
     {
@@ -239,6 +250,13 @@ DoPyramidize::PyramidRegionInfo DoPyramidize::Impl::DoPlane(const PlaneEnumerato
                     {
                         next_layer_tiles.emplace_back(make_shared<TileShim>(pyramid_tile, rect));
                     });
+                if (next_layer_tiles.empty())
+                {
+                    // this can happen if there are no valid tiles in the layer-0 (e.g. if the image is very sparse). 
+                    // In this case, we do not have to create any more layers, and we are done
+                    break;
+                }
+
                 pyramid_region_info.number_of_pyramid_layers = 1;
             }
             else
@@ -280,6 +298,13 @@ DoPyramidize::PyramidRegionInfo DoPyramidize::Impl::DoPlane(const PlaneEnumerato
 
                 UpperPyramidLayersPyramidizer upper_layers_pyramidizer(upper_layer_pyramidizer_options);
                 upper_layers_pyramidizer.Execute();
+                if (next_layer_tiles.empty())
+                {
+                    // this can happen if there are no valid tiles in the layer (e.g. if the image is very sparse). 
+                    // In this case, we do not have to create any more layers, and we are done
+                    break;
+                }
+
                 ++pyramid_region_info.number_of_pyramid_layers;
             }
         }

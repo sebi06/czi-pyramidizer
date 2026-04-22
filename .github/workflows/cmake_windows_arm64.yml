@@ -49,7 +49,18 @@ jobs:
           # Note that since we are doing a cross compilation, we cannot execute code in order to determine platform
           # characteristics like endianess and whether unaligned access is allowed. Therefore, we need to set the following
           # variables manually: CRASH_ON_UNALIGNED_ACCESS=OFF and IS_BIG_ENDIAN=FALSE.
-          cmake -A "${ARCHITECTURE}" -DCMAKE_BUILD_TYPE="${BUILD_TYPE}" -DCRASH_ON_UNALIGNED_ACCESS=OFF -DIS_BIG_ENDIAN=FALSE -DCZIPYRAMIDIZER_BUILD_UNITTESTS=OFF -DLIBCZI_BUILD_CURL_BASED_STREAM=ON -DLIBCZI_BUILD_AZURESDK_BASED_STREAM=ON -DLIBCZI_BUILD_PREFER_EXTERNALPACKAGE_LIBCURL=ON -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake  -DVCPKG_TARGET_TRIPLET=arm64-windows-static ..
+          cmake -A "${ARCHITECTURE}" \
+              -DCMAKE_BUILD_TYPE="${BUILD_TYPE}" \
+              -DCRASH_ON_UNALIGNED_ACCESS=OFF \
+              -DIS_BIG_ENDIAN=FALSE \
+              -DCZIPYRAMIDIZER_BUILD_UNITTESTS=OFF \
+              -DLIBCZI_BUILD_CURL_BASED_STREAM=ON \
+              -DLIBCZI_BUILD_AZURESDK_BASED_STREAM=ON \
+              -DLIBCZI_BUILD_PREFER_EXTERNALPACKAGE_LIBCURL=ON \
+              -DADDITIONAL_LIBS_REQUIRED_FOR_ATOMIC:STRING= \
+              -DNEON_INTRINSICS_CAN_BE_USED=TRUE \
+              -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake \
+              -DVCPKG_TARGET_TRIPLET=arm64-windows-static ..
 
       - name: Build
         shell: bash

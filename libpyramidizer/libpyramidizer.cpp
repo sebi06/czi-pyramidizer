@@ -62,7 +62,15 @@ namespace
             text = to_string(total_count_of_tiles);
             this->console_io_->WriteStdOut(text); line_length += text.size();
             this->console_io_->SetColor(ConsoleColor::DARK_WHITE, ConsoleColor::DEFAULT);
-            this->console_io_->WriteStdOut(" tiles done."); line_length += 12;
+            if (total_count_of_tiles != 1)
+            {
+                this->console_io_->WriteStdOut(" tiles done."); line_length += 12;
+            }
+            else
+            {
+                this->console_io_->WriteStdOut(" tile done."); line_length += 11;
+            }
+
             this->console_io_->SetColor(ConsoleColor::DEFAULT, ConsoleColor::DEFAULT);
             this->ClearRemainderAndSetNewLineLength(line_length);
             this->console_io_->WriteStdOut("\r");
@@ -90,7 +98,15 @@ namespace
             text = to_string(total_count_of_tiles);
             this->console_io_->WriteStdOut(text); line_length += text.size();
             this->console_io_->SetColor(ConsoleColor::DARK_WHITE, ConsoleColor::DEFAULT);
-            this->console_io_->WriteStdOut(" subblocks done."); line_length += 16;
+            if (total_count_of_tiles != 1)
+            {
+                this->console_io_->WriteStdOut(" subblocks done."); line_length += 16;
+            }
+            else
+            {
+                this->console_io_->WriteStdOut(" subblock done."); line_length += 15;
+            }
+
             this->console_io_->SetColor(ConsoleColor::DEFAULT, ConsoleColor::DEFAULT);
             this->ClearRemainderAndSetNewLineLength(line_length);
             this->console_io_->WriteStdOut("\r");
